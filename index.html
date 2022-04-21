@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Rating System Testing</title>
+		<title>Combat Sim</title>
 	</head>
 	<body style="background-color:whitesmoke;">
 		<h1>Fight Progress / Time</h1>
@@ -34,7 +34,7 @@
 				var yMin = Math.min(...data);
 				var range = yMax-yMin;
 				for (i = 0; i < data.length; i++) {
-					drawSquare(context, [canvas.width / data.length * i, canvas.height / range * (data[i]-yMin)], color);
+					drawSquare(context, [canvas.width / data.length * i, canvas.height / range * (range-data[i]-yMin)], color);
 				}
 			}
 
@@ -53,18 +53,18 @@
 			function fight() {
 				var randomElement = 0.5;
 				var fightProgressTurn = soldierStrength * (randn_bm()*randomElement + 1-randomElement) - zombies * (randn_bm()*randomElement + 1-randomElement);
-				fightProgress = clamp(fightProgress + fightProgressTurn * 0.02, 0, 1);
+				fightProgress = clamp(fightProgress + fightProgressTurn * 0.01, 0, 1);
 				if ((randn_bm()*randomElement+1-randomElement) < fightProgress) {
 					zombies = clamp(--zombies, 0, 1000);
 				}
 			}
 
-			fightData.push(1);
-			fightData.push(0);
-			for (i = 0; i < 30; i++) {
+			for (i = 0; i < 50; i++) {
 				fightData.push(fightProgress);
 				fight();
 			}
+			fightData.push(1);
+			fightData.push(0);
 			drawLineGraph(c1, ctx1, fightData, 'black');
 		</script>
 	</body>
