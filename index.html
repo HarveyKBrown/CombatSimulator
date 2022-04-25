@@ -34,7 +34,7 @@
 				var yMin = Math.min(...data);
 				var range = yMax-yMin;
 				for (i = 0; i < data.length; i++) {
-					drawSquare(context, [canvas.width / data.length * i, canvas.height / range * (range-data[i]-yMin)], color);
+					drawSquare(context, [canvas.width / data.length * i, canvas.height / range * (range-data[i]+yMin)], color);
 				}
 			}
 
