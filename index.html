@@ -45,13 +45,11 @@
 			var fightProgress = 0.5;
 
 			var soldierStrength = 5;
-			var zombies = 15;
+			var zombies = 6;
 
 			//accumulate damage
-
-
 			function fight() {
-				var randomElement = 0.5;
+				var randomElement = 0.1;
 				var fightProgressTurn = soldierStrength * (randn_bm()*randomElement + 1-randomElement) - zombies * (randn_bm()*randomElement + 1-randomElement);
 				fightProgress = clamp(fightProgress + fightProgressTurn * 0.01, 0, 1);
 				if ((randn_bm()*randomElement+1-randomElement) < fightProgress) {
@@ -63,8 +61,8 @@
 				fightData.push(fightProgress);
 				fight();
 			}
-			fightData.push(1);
 			fightData.push(0);
+			fightData.push(1);
 			drawLineGraph(c1, ctx1, fightData, 'black');
 		</script>
 	</body>
